@@ -41,7 +41,7 @@ Install-FromChocolatey 'vscode'
 Install-FromChocolatey 'microsoft-windows-terminal'
 Install-FromChocolatey 'firefox'
 Install-FromChocolatey 'googlechrome'
-Install-FromChocolatey 'powershell-core'
+Install-FromChocolatey 'powershell-preview'
 
 Install-PowerShellModule 'Posh-Git' { Add-PoshGitToProfile -AllHosts }
 Install-PowerShellModule 'oh-my-posh' { }
