@@ -48,4 +48,4 @@ Install-PowerShellModule 'oh-my-posh' { }
 Install-PowerShellModule 'PSScriptTools' { }
 
 
-Invoke-WebRequest -Uri 'PS PROFILE URL' -OutFile $PROFILE
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/danielschwensen/system-init/master/windows/Microsoft.PowerShell_profile.ps1' -OutFile $PROFILE
