@@ -1,4 +1,3 @@
-Set-ExecutionPolicy RemoteSigned
 function Install-Chocolatey {
     Set-ExecutionPolicy Bypass -Scope Process -Force;
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
@@ -27,11 +26,9 @@ function Install-PowerShellModule {
     )
 
     if (!(Get-Command -Name $ModuleName -ErrorAction SilentlyContinue)) {
-        
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
         Write-Host "Installing $ModuleName"
-        #Install-Module -Name $ModuleName -Scope CurrentUser -Confirm $true
         Install-Module -Name $ModuleName
-        #Import-Module $ModuleName -Confirm
         Import-Module $ModuleName
 
         Invoke-Command -ScriptBlock $PostInstall
@@ -49,7 +46,6 @@ function Install-PowerShellModule {
 
 
 Write-Host "Installing Nuget"
-#Install-PackageProvider -Name NuGet -Force -Confirm
 Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies
 Set-PSRepository PSGallery -InstallationPolicy Trusted
 
