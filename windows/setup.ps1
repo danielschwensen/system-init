@@ -26,6 +26,7 @@ function Install-PowerShellModule {
     )
 
     if (!(Get-Command -Name $ModuleName -ErrorAction SilentlyContinue)) {
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
         Write-Host "Installing $ModuleName"
         #Install-Module -Name $ModuleName -Scope CurrentUser -Confirm $true
         Install-Module -Name $ModuleName
