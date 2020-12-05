@@ -27,8 +27,10 @@ function Install-PowerShellModule {
 
     if (!(Get-Command -Name $ModuleName -ErrorAction SilentlyContinue)) {
         Write-Host "Installing $ModuleName"
-        Install-Module -Name $ModuleName -Scope CurrentUser -Confirm $true
-        Import-Module $ModuleName -Confirm
+        #Install-Module -Name $ModuleName -Scope CurrentUser -Confirm $true
+        Install-Module -Name $ModuleName -Confirm
+        #Import-Module $ModuleName -Confirm
+        Import-Module $ModuleName
 
         Invoke-Command -ScriptBlock $PostInstall
     } else {
@@ -36,14 +38,26 @@ function Install-PowerShellModule {
     }
 }
 
-Install-Chocolatey
-Install-FromChocolatey 'vscode'
-Install-FromChocolatey 'microsoft-windows-terminal'
-Install-FromChocolatey 'firefox'
-Install-FromChocolatey 'googlechrome'
-Install-FromChocolatey 'powershell-preview'
+#Install-Chocolatey
+#Install-FromChocolatey 'vscode'
+#Install-FromChocolatey 'microsoft-windows-terminal'
+#Install-FromChocolatey 'firefox'
+#Install-FromChocolatey 'googlechrome'
+#Install-FromChocolatey 'powershell-preview'
 
-Install-PowerShellModule 'Posh-Git' { Add-PoshGitToProfile -AllHosts }
+if (!(Get-PackageProvider -Name Nuget -ErrorAction SilentlyContinue)) {
+
+    Write-Host "Installing Nuget"
+    #Install-PackageProvider -Name NuGet -Force -Confirm
+    Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies
+    Set-PSRepository PSGallery -InstallationPolicy Trusted
+} else {
+
+    Write-Host "Nuget was already installed, skipping"
+}
+
+#Install-PowerShellModule 'Posh-Git' { Add-PoshGitToProfile -AllHosts }
+Install-PowerShellModule 'Posh-Git' { }
 Install-PowerShellModule 'oh-my-posh' { }
 Install-PowerShellModule 'PSScriptTools' { }
 
