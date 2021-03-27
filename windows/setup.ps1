@@ -63,3 +63,15 @@ Install-PowerShellModule 'PSScriptTools' { }
 
 
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/danielschwensen/system-init/master/windows/Microsoft.PowerShell_profile.ps1' -OutFile $PROFILE
+
+# Delete Windows Terminal settings
+$settings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+if(Test-Path $settings){
+    Remove-Item $settings -Force
+}
+
+#Download Windows Terminal Settings
+$url = "https://raw.githubusercontent.com/danielschwensen/system-init/master/wt-settings/settings.json"
+$output = $settings
+Invoke-WebRequest -Uri $url -OutFile $output
+explorer "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
