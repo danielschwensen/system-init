@@ -37,7 +37,7 @@ function Install-PowerShellModule {
     }
 }
 
-#Install-Chocolatey
+Install-Chocolatey
 #Install-FromChocolatey 'vscode'
 Install-FromChocolatey 'microsoft-windows-terminal'
 #Install-FromChocolatey 'firefox'
