@@ -21,7 +21,6 @@ $FONTS = 0x14
 $CopyOptions = 4 + 16;
 $objShell = New-Object -ComObject Shell.Application
 $objFolder = $objShell.Namespace($FONTS)
-# Can be deleted $allFonts = dir $FontsFolder
 foreach($font in Get-ChildItem -Path $fontsFolder -File)
 {
     $dest = "C:\Windows\Fonts\$font"
