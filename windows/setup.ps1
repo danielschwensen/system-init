@@ -45,11 +45,11 @@ function Install-PowerShellModule {
 Set-ExecutionPolicy RemoteSigned -Force
 Install-Fonts
 Install-Chocolatey
-#Install-FromChocolatey 'vscode'
+Install-FromChocolatey 'vscode'
 Install-FromChocolatey 'microsoft-windows-terminal'
-#Install-FromChocolatey 'firefox'
-#Install-FromChocolatey 'googlechrome'
-#Install-FromChocolatey 'powershell-preview'
+Install-FromChocolatey 'firefox'
+Install-FromChocolatey 'googlechrome'
+Install-FromChocolatey 'powershell-preview'
 
 
 Write-Host "Installing Nuget"

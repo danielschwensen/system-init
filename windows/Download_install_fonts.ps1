@@ -1,5 +1,5 @@
 # Create Temp fonts dir
-$TempFontDir = "fonts3"
+$TempFontDir = "fonts"
 New-Item -Path "$env:TEMP\$TempFontDir" -ItemType Directory -Force
 explorer "$env:TEMP\$TempFontDir"
 explorer "$env:TEMP"
@@ -21,7 +21,7 @@ $FONTS = 0x14
 $CopyOptions = 4 + 16;
 $objShell = New-Object -ComObject Shell.Application
 $objFolder = $objShell.Namespace($FONTS)
-$allFonts = dir $FontsFolder
+# Can be deleted $allFonts = dir $FontsFolder
 foreach($font in Get-ChildItem -Path $fontsFolder -File)
 {
     $dest = "C:\Windows\Fonts\$font"
@@ -38,3 +38,4 @@ foreach($font in Get-ChildItem -Path $fontsFolder -File)
 }
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "GoMono NF (TrueType)" /t REG_SZ /d "go mono nerd font complete windows compatible.ttf" /f
 explorer "C:\Windows\Fonts"
+Remove-Item "$env:TEMP\Go-Mono.zip"
