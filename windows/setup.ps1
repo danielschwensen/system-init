@@ -1,3 +1,8 @@
+function Install-Fonts {
+    Set-ExecutionPolicy Bypass -Scope Process -Force;
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/danielschwensen/system-init/master/windows/Download_install_fonts.ps1'))
+}
 function Install-Chocolatey {
     Set-ExecutionPolicy Bypass -Scope Process -Force;
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
@@ -38,6 +43,7 @@ function Install-PowerShellModule {
 }
 
 Set-ExecutionPolicy RemoteSigned -Force
+Install-Fonts
 Install-Chocolatey
 #Install-FromChocolatey 'vscode'
 Install-FromChocolatey 'microsoft-windows-terminal'
