@@ -37,6 +37,7 @@ function Install-PowerShellModule {
     }
 }
 
+Set-ExecutionPolicy RemoteSigned -Force
 Install-Chocolatey
 #Install-FromChocolatey 'vscode'
 Install-FromChocolatey 'microsoft-windows-terminal'
