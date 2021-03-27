@@ -39,7 +39,7 @@ function Install-PowerShellModule {
 
 #Install-Chocolatey
 #Install-FromChocolatey 'vscode'
-#Install-FromChocolatey 'microsoft-windows-terminal'
+Install-FromChocolatey 'microsoft-windows-terminal'
 #Install-FromChocolatey 'firefox'
 #Install-FromChocolatey 'googlechrome'
 #Install-FromChocolatey 'powershell-preview'
