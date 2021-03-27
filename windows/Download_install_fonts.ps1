@@ -5,7 +5,8 @@ explorer "$env:TEMP\$TempFontDir"
 explorer "$env:TEMP"
 
 #Download Font
-$url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Go-Mono.zip"
+$url = "https://raw.githubusercontent.com/danielschwensen/system-init/master/windows/font/Go-Mono.zip"
+
 $output = "$env:TEMP\Go-Mono.zip"
 $start_time = Get-Date
 
@@ -35,4 +36,5 @@ foreach($font in Get-ChildItem -Path $fontsFolder -File)
         $objFolder.CopyHere($font.fullname,$CopyFlag)
     }
 }
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "GoMono NF (TrueType)" /t REG_SZ /d "go mono nerd font complete windows compatible.ttf" /f
 explorer "C:\Windows\Fonts"
