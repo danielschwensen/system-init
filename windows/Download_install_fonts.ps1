@@ -1,6 +1,8 @@
 # Create Temp fonts dir
 $TempFontDir = "fonts3"
-New-Item -Path "$env:TEMP\$TempFontDir" -ItemType Directory -Force 
+New-Item -Path "$env:TEMP\$TempFontDir" -ItemType Directory -Force
+explorer "$env:TEMP\$TempFontDir"
+explorer "$env:TEMP"
 
 #Download Font
 $url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Go-Mono.zip"
@@ -33,3 +35,4 @@ foreach($font in Get-ChildItem -Path $fontsFolder -File)
         $objFolder.CopyHere($font.fullname,$CopyFlag)
     }
 }
+explorer "C:\Windows\Fonts"
