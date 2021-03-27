@@ -71,7 +71,7 @@ if(Test-Path $settings){
 }
 
 #Download Windows Terminal Settings
-$url = "https://raw.githubusercontent.com/danielschwensen/system-init/master/wt-settings/settings.json"
+$url = "https://raw.githubusercontent.com/danielschwensen/system-init/master/windows/wt-settings/settings.json"
 $output = $settings
 Invoke-WebRequest -Uri $url -OutFile $output
 explorer "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
